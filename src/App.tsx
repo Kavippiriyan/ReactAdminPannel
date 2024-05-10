@@ -1,15 +1,20 @@
-
+import { useState } from 'react'
 import './App.css'
-import Headers from './Headers'
-import SideBar from './SideBar'
+import Header from './Headers'
+import Sidebar from './SideBar'
 import Home from './Home'
 
 function App() {
+  const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
+
+  const OpenSidebar = () => {
+    setOpenSidebarToggle(!openSidebarToggle)
+  }
 
   return (
     <div className='grid-container'>
-      <Headers />
-      <SideBar />
+      <Header OpenSidebar={OpenSidebar}/>
+      <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
       <Home />
     </div>
   )
